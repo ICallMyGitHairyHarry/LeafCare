@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.leafcare.ui.home.HomeViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.fragments.MyPlantFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:noteApiStatus="@{viewModel.noteStatus}"
+            android:paddingHorizontal="24dp">
+
+            <!-- Plant Image -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_plant_image"
+                android:layout_width="364dp"
+                android:layout_height="265dp"
+                android:contentDescription="@string/accessibility_plant_image"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="16dp"
+                app:shapeAppearanceOverlay="@style/roundedImageView"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <!-- Plant Name -->
+            <TextView
+                android:id="@+id/tv_plant_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@{viewModel.plant.name}"
+                tools:text="Кактус"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+            <!-- Plant Type -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_plant_type_caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_marginEnd="64dp"
+                    android:text="@string/type" />
+
+                <TextView
+                    android:id="@+id/tv_plant_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:text="@{viewModel.plant.plantType}"
+                    tools:text="Cactaceae"
+                    />
+
+
+            </LinearLayout>
+
+            <!-- Plant Description -->
+            <TextView
+                android:id="@+id/tv_plant_description_caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/description"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+
+            <TextView
+                android:id="@+id/tv_plant_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{viewModel.plant.description}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                tools:text="I found him in trash, it was so cute!"/>
+
+            <!-- Plant Parameters -->
+            <TextView
+                android:id="@+id/tv_plant_parameters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/parameters"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+            <!-- Plant Height -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="32dp"
+                android:layout_marginTop="8dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_plant_height_caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_marginEnd="48dp"
+                    android:text="@string/plant_height" />
+
+                <TextView
+                    android:id="@+id/tv_plant_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:text="@{Double.toString(viewModel.plantNotes.get(viewModel.plantNotes.size() - 1).heightCm)}"
+                    tools:text="3 см"
+                    />
+
+
+            </LinearLayout>
+
+<!--            Notes Linear Layout-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ll_notes"
+                android:visibility="visible"
+                android:orientation="vertical"
+                >
+
+                <!-- Add Note Button -->
+                <Button
+                    android:id="@+id/btn_add_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/rounded_button"
+                    app:backgroundTint="@color/pale_green"
+                    android:textColor="@color/black"
+                    android:text="@string/plus_note"
+                    android:layout_marginBottom="24dp"
+                    android:layout_gravity="center" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_note_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:layout_marginBottom="48dp"
+                    android:clipToPadding="false"
+                    app:noteListData="@{viewModel.plantNotes}"
+                    app:layoutManager=
+                        "androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/vertical_list_item_note" />
+
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/pb"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <!-- Error Message -->
+            <TextView
+                android:id="@+id/tv_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.error}"
+                tools:text="error"
+                android:layout_gravity="center"
+                android:textColor="@color/red"
+                android:visibility="gone" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

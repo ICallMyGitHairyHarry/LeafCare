@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.leafcare.ui.dashboard.DashboardViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:plantApiStatus="@{viewModel.status}"
+        android:orientation="vertical"
+        android:id="@+id/ll_status"
+        android:gravity="center"
+        tools:context=".ui.dashboard.DashboardFragment">
+
+
+        <ProgressBar
+            android:id="@+id/pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/ll_plants"
+            android:gravity="center"
+            >
+
+<!--            app:scheduleListData="@{viewModel.plantSchedules}"-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_my_plants"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingHorizontal="16dp"
+                android:layout_marginBottom="48dp"
+                app:scheduleListData="@{viewModel.plantTypes}"
+                app:layoutManager=
+                    "androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="10"
+                tools:listitem="@layout/vertical_list_item_schedule"
+                />
+
+            <!-- Error Message -->
+            <TextView
+                android:id="@+id/tv_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.error}"
+                tools:text="error"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                android:layout_marginTop="32dp" />
+
+            <!-- Retry Button -->
+            <Button
+                android:layout_marginTop="36dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/retry"
+                android:textAllCaps="false"
+                android:visibility="gone"
+                android:background="@drawable/rounded_button"
+                android:id="@+id/b_retry"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

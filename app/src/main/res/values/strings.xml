@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">LeafCare</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="accessibility_add_plant">Add plant</string>
+    <string name="accessibility_filter">Filter</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="authorisation">Авторизация</string>
+    <string name="e_mail">E-mail</string>
+    <string name="Password">Пароль</string>
+    <string name="login">Войти</string>
+    <string name="no_account_q">Нет аккаунта?</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="registration">Регистрация</string>
+    <string name="name">Имя</string>
+    <string name="have_account_q">Уже есть аккаунт?</string>
+    <string name="fill_fields">Заполните все поля!</string>
+    <!-- Strings related to main activity -->
+    <string name="cd_arrow_plant">Нажмите на растение, чтобы посмотреть подробную информацию о нём</string>
+    <string name="retry">Повторить</string>
+    <string name="plant_name">Растение</string>
+    <string name="no_plants_yet">У вас еще нет растений</string>
+    <string name="title_my_plants">Мои растения</string>
+    <string name="title_library">Библиотека растений</string>
+    <string name="title_account">Аккаунт</string>
+    <string name="accessibility_plant_image">Изображение растения</string>
+    <string name="accessibility_plant_add_button">Кнопка добавления растения</string>
+    <string name="type">Тип</string>
+    <string name="plus_note">+ заметка</string>
+    <string name="description">Описание</string>
+    <string name="parameters">Параметры</string>
+    <string name="plant_height">Высота растрения</string>
+    <string name="note">Заметка</string>
+    <string name="logout">Выйти</string>
+    <string name="name2">Название</string>
+    <string name="height_in_cm">Высота в см</string>
+    <string name="plus_photo">+ Сделать фото</string>
+    <string name="save">Сохранить</string>
+    <string name="add_plant_screen_title">Добавление растения</string>
+    <string name="fill_fields_and_add_photo">Пожалуйста, заполните все поля и добавьте фото!</string>
+    <string name="plant_saved">Растение сохранено!</string>
+    <string name="loading">Загрузка...</string>
+    <string name="note_saved">Заметка сохранена!</string>
+    <string name="add_note">Добавить заметку</string>
+    <string name="delete_plant">Удалить из Моих растений</string>
+</resources>

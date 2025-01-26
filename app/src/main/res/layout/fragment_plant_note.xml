@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.leafcare.ui.home.HomeViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        tools:context=".ui.home.fragments.PlantNoteFragment">
+
+        <!-- Plant Height -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tv_plant_height_caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:layout_marginEnd="48dp"
+                android:text="@string/plant_height" />
+
+            <TextView
+                android:id="@+id/tv_plant_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:text="@{Double.toString(viewModel.note.heightCm)}"
+                tools:text="3 см" />
+
+
+        </LinearLayout>
+
+        <!-- Plant Description -->
+        <TextView
+            android:id="@+id/tvPlantDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:text="@{viewModel.note.noteText}"
+            tools:text="Кактусы — колючие растения, приспособившиеся к жизни в засушливых пустынях."
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/medium_pale_green"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Timestamp -->
+        <TextView
+            android:id="@+id/tvPlantTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="5 дней назад в 7:30 pm"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</layout>

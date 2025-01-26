@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.leafcare.ui.home.HomeFragment"
+        android:label="@string/title_my_plants"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_myPlantFragment"
+            app:destination="@id/myPlantFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_addPlantFragment"
+            app:destination="@id/addPlantFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.leafcare.ui.dashboard.DashboardFragment"
+        android:label="@string/title_library"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.example.leafcare.ui.useraccount.AccountFragment"
+        android:label="@string/title_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/myPlantFragment"
+        android:name="com.example.leafcare.ui.home.fragments.MyPlantFragment"
+        android:label="@string/plant_name"
+        tools:layout="@layout/fragment_my_plant">
+        <argument
+            android:name="plantId"
+            app:argType="integer" />
+        <argument
+            android:name="plantName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_myPlantFragment_to_plantNoteFragment"
+            app:destination="@id/plantNoteFragment" />
+        <action
+            android:id="@+id/action_myPlantFragment_to_addPlantNoteFragment"
+            app:destination="@id/addPlantNoteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/plantNoteFragment"
+        android:name="com.example.leafcare.ui.home.fragments.PlantNoteFragment"
+        android:label="@string/note"
+        tools:layout="@layout/fragment_plant_note" />
+    <fragment
+        android:id="@+id/addPlantFragment"
+        android:name="com.example.leafcare.ui.home.fragments.AddPlantFragment"
+        android:label="@string/add_plant_screen_title"
+        tools:layout="@layout/fragment_add_plant" >
+        <action
+            android:id="@+id/action_addPlantFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPlantNoteFragment"
+        android:name="com.example.leafcare.ui.home.fragments.AddPlantNoteFragment"
+        android:label="@string/add_note">
+        <action
+            android:id="@+id/action_addPlantNoteFragment_to_myPlantFragment"
+            app:destination="@id/myPlantFragment" />
+    </fragment>
+</navigation>

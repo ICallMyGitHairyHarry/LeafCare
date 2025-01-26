@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="note"
+            type="com.example.leafcare.data.model.PlantNote" />
+
+        <variable
+            name="clickListener"
+            type="com.example.leafcare.ui.home.adapters.NoteListener" />
+    </data>
+
+<!--    android:background="@drawable/bg_card"-->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/medium_pale_green"
+        android:layout_marginBottom="12dp"
+        android:onClick="@{() -> clickListener.onClick(note)}"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+
+            >
+
+            <TextView
+                android:id="@+id/tv_action_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/note"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/tv_action_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@{note.logDate}"
+                tools:text="Вчера в 7:30 pm" />
+
+
+        </LinearLayout>
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
