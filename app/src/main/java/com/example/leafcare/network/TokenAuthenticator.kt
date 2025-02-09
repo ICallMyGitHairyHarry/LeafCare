@@ -54,5 +54,64 @@ class TokenAuthenticator (
     }
 }
 
+/*
+// Improvement: Differentiate Between Network Errors and Auth Errors
+//No, the Authenticator itself cannot directly modify the HTTP response code. It works at the network layer and its job is to:
+//
+//Attempt to refresh the token.
+//Retry the request with the new token if successful.
+//If the token refresh fails:
+//
+//The original response (401 Unauthorized from the server) is passed back to your app logic.
+//The Authenticator cannot indicate network errors directly to your app.
+
+// authenticator
+override fun authenticate(route: Route?, response: Response): Request? {
+    return try {
+        val refreshToken = tokenManager.getRefreshToken() ?: return null
+        val tokenResponse = apiService.refreshToken(refreshToken).execute()
+
+        if (tokenResponse.isSuccessful) {
+            val body = tokenResponse.body() ?: throw Exception("Empty response body")
+            tokenManager.saveAccessToken(body.accessToken)
+            tokenManager.saveRefreshToken(body.refreshToken)
+
+            // Retry the original request with the new token
+            response.request.newBuilder()
+                .header("Authorization", "Bearer ${body.accessToken}")
+                .build()
+        } else {
+            // Handle specific server errors (e.g., invalid refresh token)
+            throw AuthenticatorException("Auth error: ${tokenResponse.code()}")
+        }
+    } catch (e: IOException) {
+        // Network error
+        throw NetworkErrorException("Network error: ${e.message}", e)
+    } catch (e: Exception) {
+        // Other errors
+        throw AuthenticatorException("Authentication error: ${e.message}", e)
+    }
+}
+
+// Custom Exceptions:
+class AuthenticatorException(message: String, cause: Throwable? = null) : Exception(message, cause)
+class NetworkErrorException(message: String, cause: Throwable? = null) : IOException(message, cause)
+
+// App-Level Error Handling (e.g. ViewModel):
+try {
+    val response = apiService.getProtectedResource()
+    // Handle the successful response
+} catch (e: NetworkErrorException) {
+    // Handle network issues
+    showError("Network error occurred. Please try again.")
+} catch (e: AuthenticatorException) {
+    // Handle authentication issues
+    logOutUser()
+    showError("Session expired. Please log in again.")
+} catch (e: Exception) {
+    // Handle other errors
+    showError("An unexpected error occurred.")
+}
+*/
 
 

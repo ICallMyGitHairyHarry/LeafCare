@@ -50,6 +50,10 @@ class AddPlantNoteFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        //TODO: Limit height to 999.99 because DB don't support it
+        //TODO: Check correctness of inputs + handle "'" - server doesn't support it
+        //TODO: Push up notifications
+
         // Handle Save Button Click
         binding.btnSaveNote.setOnClickListener {
             val height = binding.etPlantHeight.text

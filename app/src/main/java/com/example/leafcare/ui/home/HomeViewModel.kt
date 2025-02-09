@@ -78,7 +78,7 @@ class HomeViewModel(
     init {
         _isPlantsEmpty.value = false
         PlantsApi.init(tokenManager)
-        getMyPlants()
+        getMyPlants() //TODO: nav bug
     }
 
 

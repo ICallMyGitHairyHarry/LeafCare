@@ -135,6 +135,7 @@ class AddPlantFragment : Fragment() {
     }
 
 
+    // TODO: refactor (somewhere functions, somewhere not) + extract string resources
 
     private fun initLaunchers() {
         // Camera Result Launcher

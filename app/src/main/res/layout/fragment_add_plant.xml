@@ -16,6 +16,7 @@
         android:padding="24dp"
         tools:context=".ui.home.fragments.AddPlantFragment">
 
+        <!--        TODO: add progress bar logic-->
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -45,6 +45,7 @@ class TokenManager(context: Context) {
         Log.d("TokenManager", "Tokens cleared.")
     }
 
+    // temporary decision
     fun saveEmail(email: String) {
         sharedPreferences.edit().apply {
             putString("email", email)

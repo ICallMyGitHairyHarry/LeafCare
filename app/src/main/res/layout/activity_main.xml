@@ -29,5 +29,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
+    <!--    if use androidx.fragment.app.FragmentContainerView then in activity it should be:
+val navigationHost =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+val navController = navigationHost.navController
+-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
